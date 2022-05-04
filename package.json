@@ -24,7 +24,7 @@
 		"@types/react": "18.0.6",
 		"@typescript-eslint/eslint-plugin": "5.20.0",
 		"@typescript-eslint/parser": "5.20.0",
-		"@vitejs/plugin-vue": "2.3.1",
+		"@vitejs/plugin-vue": "2.3.2",
 		"@vue/compiler-sfc": "3.2.33",
 		"eslint": "8.14.0",
 		"husky": "7.0.4",
