@@ -6,11 +6,11 @@
  */
 export function getStyle(el: HTMLElement | null, attr?: string): CSSStyleDeclaration | string | number {
 	if (!el) {
-		return '';
+		return ''
 	}
-	const style = window.getComputedStyle(el, null);
+	const style = window.getComputedStyle(el, null)
 	if (attr) {
-		return style[attr as any];
+		return style.getPropertyValue(attr)
 	}
-	return style;
+	return style
 }

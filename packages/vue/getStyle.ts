@@ -5,12 +5,12 @@
  * @returns {CSSStyleDeclaration | string | number} 返回元素的样式集合或者指定的样式值
  */
 export function getStyle(el: HTMLElement, attr?: string): CSSStyleDeclaration | string | number {
-	if (!el) {
-		return '';
-	}
-	const style = window.getComputedStyle(el, null);
-	if (attr) {
-		return style[attr as any];
-	}
-	return style;
+  if (!el) {
+    return ''
+  }
+  const style = window.getComputedStyle(el, null)
+  if (attr) {
+    return style.getPropertyValue(attr)
+  }
+  return style
 }
