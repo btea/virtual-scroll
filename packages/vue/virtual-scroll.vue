@@ -157,7 +157,7 @@ export default defineComponent({
         left: 0;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: no-wrap;
+        white-space: nowrap;
         box-sizing: border-box;
       }
     }
