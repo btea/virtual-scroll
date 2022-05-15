@@ -41,6 +41,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .virtual-box {
   height: 800px;
+  box-shadow: 0 0 5px rgba($color: #66ccff, $alpha: 0.5);
   :deep(.item) {
     width: 100%;
   }

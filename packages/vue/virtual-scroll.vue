@@ -3,7 +3,7 @@
     <div class="scroll-list-container-box" @scroll="scrollDeal" ref="box">
       <ul class="scroll-list-box" :style="{ height: sumHeight + 'px' }">
         <li class="item" v-for="(item, i) in list" :key="item + '-' + i" :style="itemStyle(item)">
-          <list-item :content="item"></list-item>
+          <list-item :content="(item as any)"></list-item>
         </li>
       </ul>
     </div>
@@ -14,14 +14,6 @@
 import { computed, defineComponent, onBeforeMount, onMounted, provide, ref } from 'vue'
 import { getStyle } from './getStyle'
 import ListItem from './list-item'
-
-function getShowData(base: number, data: Array<any>): Array<any> {
-  base -= base
-  if (base < 0) {
-    base = 0
-  }
-  return data.slice(base, base + 20)
-}
 
 export default defineComponent({
   components: {
@@ -48,9 +40,10 @@ export default defineComponent({
       const bar_h_v = getStyle(bar.value!, 'height') as string
       box_h = parseInt(box_h_v)
       bar_h = parseInt(bar_h_v)
-      sumHeight.value -= box_h
+      // sumHeight.value -= box_h
       document.addEventListener('mousemove', docMouseMove)
       document.addEventListener('mouseup', docMouseUp)
+      showNum.value = Math.ceil(box_h / height)
     })
     onBeforeMount(() => {
       document.removeEventListener('mousemove', docMouseMove)
@@ -58,9 +51,9 @@ export default defineComponent({
     })
     const base = ref(0)
     const sumHeight = ref(data.length * height)
+    const showNum = ref(20)
     const list = computed(() => {
-      // const _list = getShowData(base.value, data); // 这样直接调用 getShowData无效？
-      const _list = data.slice(base.value, base.value + 20)
+      const _list = data.slice(base.value, base.value + showNum.value)
       return _list
     })
     const h = ref(height)
@@ -112,8 +105,8 @@ export default defineComponent({
           v = box_h - bar_h
         }
         const scroll_y = per * sumHeight.value
-        const box_el = box.value as unknown as HTMLElement
-        const bar_el = bar.value as unknown as HTMLElement
+        const box_el = box.value!
+        const bar_el = bar.value!
         box_el.scrollTop = scroll_y
         bar_el.style.transform = `translateY(${v}px)`
       }
