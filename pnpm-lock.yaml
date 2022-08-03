@@ -11,10 +11,10 @@ importers:
       eslint: 8.14.0
       husky: 7.0.4
       prettier: 2.6.2
-      sass: 1.50.1
+      sass: 1.54.1
       vite: ^3.0.0
     dependencies:
-      vite: 3.0.0_sass@1.50.1
+      vite: 3.0.0_sass@1.54.1
     devDependencies:
       '@commitlint/cli': 16.2.3
       '@commitlint/config-conventional': 16.2.1
@@ -23,7 +23,7 @@ importers:
       eslint: 8.14.0
       husky: 7.0.4
       prettier: 2.6.2
-      sass: 1.50.1
+      sass: 1.54.1
 
   packages/react:
     specifiers:
@@ -821,7 +821,7 @@ packages:
       vite: ^2.5.10
       vue: ^3.2.25
     dependencies:
-      vite: 3.0.0_sass@1.50.1
+      vite: 3.0.0_sass@1.54.1
       vue: 3.2.33
     dev: true
 
@@ -2468,8 +2468,8 @@ packages:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
     dev: true
 
-  /sass/1.50.1:
-    resolution: {integrity: sha512-noTnY41KnlW2A9P8sdwESpDmo+KBNkukI1i8+hOK3footBUcohNHtdOJbckp46XO95nuvcHDDZ+4tmOnpK3hjw==}
+  /sass/1.54.1:
+    resolution: {integrity: sha512-GHJJr31Me32RjjUBagyzx8tzjKBUcDwo5239XANIRBq0adDu5iIG0aFO0i/TBb/4I9oyxkEv44nq/kL1DxdDhA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -2753,7 +2753,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite/3.0.0_sass@1.50.1:
+  /vite/3.0.0_sass@1.54.1:
     resolution: {integrity: sha512-M7phQhY3+fRZa0H+1WzI6N+/onruwPTBTMvaj7TzgZ0v2TE+N2sdLKxJOfOv9CckDWt5C4HmyQP81xB4dwRKzA==}
     engines: {node: '>=14.18.0'}
     hasBin: true
@@ -2776,7 +2776,7 @@ packages:
       postcss: 8.4.14
       resolve: 1.22.1
       rollup: 2.76.0
-      sass: 1.50.1
+      sass: 1.54.1
     optionalDependencies:
       fsevents: 2.3.2
 
