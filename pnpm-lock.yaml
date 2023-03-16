@@ -65,12 +65,12 @@ importers:
 
   playground/vue:
     specifiers:
-      '@vitejs/plugin-vue': ^2.3.2
+      '@vitejs/plugin-vue': ^4.0.0
       vue: ^3.2.33
     dependencies:
       vue: 3.2.33
     devDependencies:
-      '@vitejs/plugin-vue': 2.3.2_vite@3.0.0+vue@3.2.33
+      '@vitejs/plugin-vue': 4.1.0_vite@3.0.0+vue@3.2.33
 
 packages:
 
@@ -814,11 +814,11 @@ packages:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-vue/2.3.2_vite@3.0.0+vue@3.2.33:
-    resolution: {integrity: sha512-umyypfSHS4kQLdYAnJHhaASq7FRzNCdvcRoQ3uYGNk1/M4a+hXUd7ysN7BLhCrWH6uBokyCkFeUAaFDzSaaSrQ==}
-    engines: {node: '>=12.0.0'}
+  /@vitejs/plugin-vue/4.1.0_vite@3.0.0+vue@3.2.33:
+    resolution: {integrity: sha512-++9JOAFdcXI3lyer9UKUV4rfoQ3T1RN8yDqoCLar86s0xQct5yblxAE+yWgRnU5/0FOlVCpTZpYSBV/bGWrSrQ==}
+    engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
-      vite: ^2.5.10
+      vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
       vite: 3.0.0_sass@1.50.1
