@@ -9,7 +9,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.20.0
       '@typescript-eslint/parser': 5.20.0
       eslint: 8.14.0
-      husky: 7.0.4
+      husky: 8.0.3
       prettier: 2.6.2
       sass: 1.50.1
       vite: ^3.0.0
@@ -21,7 +21,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.20.0_10f1225cae0df3f21a1124c66f13148b
       '@typescript-eslint/parser': 5.20.0_eslint@8.14.0
       eslint: 8.14.0
-      husky: 7.0.4
+      husky: 8.0.3
       prettier: 2.6.2
       sass: 1.50.1
 
@@ -1833,9 +1833,9 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
-  /husky/7.0.4:
-    resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
-    engines: {node: '>=12'}
+  /husky/8.0.3:
+    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
