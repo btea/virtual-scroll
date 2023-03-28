@@ -11,10 +11,10 @@ importers:
       eslint: 8.14.0
       husky: 8.0.3
       prettier: 2.6.2
-      sass: 1.50.1
+      sass: 1.60.0
       vite: ^4.0.0
     dependencies:
-      vite: 4.2.1_sass@1.50.1
+      vite: 4.2.1_sass@1.60.0
     devDependencies:
       '@commitlint/cli': 16.3.0
       '@commitlint/config-conventional': 16.2.4
@@ -23,7 +23,7 @@ importers:
       eslint: 8.14.0
       husky: 8.0.3
       prettier: 2.6.2
-      sass: 1.50.1
+      sass: 1.60.0
 
   packages/react:
     specifiers:
@@ -58,7 +58,7 @@ importers:
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
     devDependencies:
-      '@vitejs/plugin-react': 3.1.0_vite@3.0.0
+      '@vitejs/plugin-react': 3.1.0_vite@4.2.1
 
   playground/vanilla:
     specifiers: {}
@@ -938,7 +938,7 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-react/3.1.0_vite@3.0.0:
+  /@vitejs/plugin-react/3.1.0_vite@4.2.1:
     resolution: {integrity: sha512-AfgcRL8ZBhAlc3BFdigClmTUMISmmzHn7sB2h9U1odvc5U/MjWXsAaz18b/WoppUTDBzxOJwo2VdClfUcItu9g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -949,7 +949,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6_@babel+core@7.21.3
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 3.0.0_sass@1.50.1
+      vite: 4.2.1_sass@1.60.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -961,7 +961,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.2.1_sass@1.50.1
+      vite: 4.2.1_sass@1.60.0
       vue: 3.2.33
     dev: true
 
@@ -1877,7 +1877,7 @@ packages:
       has: 1.0.3
 
   /is-extglob/2.1.1:
-    resolution: {integrity: sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=}
+    resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
 
   /is-fullwidth-code-point/3.0.0:
@@ -2447,8 +2447,8 @@ packages:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
     dev: true
 
-  /sass/1.50.1:
-    resolution: {integrity: sha512-noTnY41KnlW2A9P8sdwESpDmo+KBNkukI1i8+hOK3footBUcohNHtdOJbckp46XO95nuvcHDDZ+4tmOnpK3hjw==}
+  /sass/1.60.0:
+    resolution: {integrity: sha512-updbwW6fNb5gGm8qMXzVO7V4sWf7LMXnMly/JEyfbfERbVH46Fn6q02BX7/eHTdKpE7d+oTkMMQpFWNUMfFbgQ==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -2763,7 +2763,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite/4.2.1_sass@1.50.1:
+  /vite/4.2.1_sass@1.60.0:
     resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2792,7 +2792,7 @@ packages:
       postcss: 8.4.21
       resolve: 1.22.1
       rollup: 3.20.2
-      sass: 1.50.1
+      sass: 1.60.0
     optionalDependencies:
       fsevents: 2.3.2
 
