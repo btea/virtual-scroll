@@ -21,8 +21,8 @@
 	},
 	"homepage": "https://github.com/btea/virtual-scroll#readme",
 	"devDependencies": {
-		"@commitlint/cli": "17.5.1",
-		"@commitlint/config-conventional": "17.4.4",
+		"@commitlint/cli": "17.8.1",
+		"@commitlint/config-conventional": "17.8.1",
 		"@typescript-eslint/eslint-plugin": "5.57.0",
 		"@typescript-eslint/parser": "5.57.0",
 		"eslint": "8.36.0",
