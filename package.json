@@ -1,36 +1,36 @@
 {
-	"name": "virtual-scroll",
-	"version": "0.0.1",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "vite",
-		"build": "vite build",
-		"lint": "eslint . --ext .js,.ts,.tsx,.json,.vue --fix",
-		"prepare": "husky install"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/btea/virtual-scroll.git"
-	},
-	"author": "btea <2356281422@qq.com>",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/btea/virtual-scroll/issues"
-	},
-	"homepage": "https://github.com/btea/virtual-scroll#readme",
-	"devDependencies": {
-		"@commitlint/cli": "17.5.1",
-		"@commitlint/config-conventional": "17.4.4",
-		"@typescript-eslint/eslint-plugin": "5.57.0",
-		"@typescript-eslint/parser": "5.57.0",
-		"eslint": "8.36.0",
-		"husky": "8.0.3",
-		"prettier": "2.8.7",
-		"sass": "1.60.0"
-	},
-	"dependencies": {
-		"vite": "^4.0.0"
-	}
+  "name": "virtual-scroll",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "packageManager": "pnpm@10.11.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "vite",
+    "build": "vite build",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/btea/virtual-scroll.git"
+  },
+  "author": "btea <2356281422@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/btea/virtual-scroll/issues"
+  },
+  "homepage": "https://github.com/btea/virtual-scroll#readme",
+  "devDependencies": {
+    "@commitlint/cli": "19.8.1",
+    "@commitlint/config-conventional": "19.8.1",
+    "@typescript-eslint/eslint-plugin": "8.32.1",
+    "@typescript-eslint/parser": "8.32.1",
+    "eslint": "^9.27.0",
+    "prettier": "3.5.3",
+    "sass": "1.89.0"
+  },
+  "dependencies": {
+    "vite": "^6.3.5"
+  }
 }

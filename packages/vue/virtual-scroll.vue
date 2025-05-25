@@ -3,7 +3,7 @@
     <div class="scroll-list-container-box" @scroll="scrollDeal" ref="box">
       <ul class="scroll-list-box" :style="{ height: sumHeight + 'px' }">
         <li class="item" v-for="(item, i) in list" :key="item + '-' + i" :style="itemStyle(item)">
-          <list-item :content="(item as any)"></list-item>
+          <list-item :content="item as any"></list-item>
         </li>
       </ul>
     </div>

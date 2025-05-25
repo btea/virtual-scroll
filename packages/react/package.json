@@ -9,10 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.9"
+    "@types/react": "^19.1.5"
   }
 }
