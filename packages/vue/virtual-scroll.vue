@@ -2,131 +2,137 @@
   <div class="container">
     <div class="scroll-list-container-box" @scroll="scrollDeal" ref="box">
       <ul class="scroll-list-box" :style="{ height: sumHeight + 'px' }">
-        <li class="item" v-for="(item, i) in list" :key="item + '-' + i" :style="itemStyle(item)">
-          <list-item :content="item as any"></list-item>
+        <li class="item" v-for="(item, i) in list" :key="item + '-' + i" :style="item.style">
+          <slot :item="item" :index="i">
+            {{ item }}
+          </slot>
         </li>
       </ul>
     </div>
     <div class="scroll-bar" ref="bar" @mousedown="scrollBarDown"></div>
   </div>
 </template>
-<script lang="ts">
-import { computed, defineComponent, onBeforeMount, onMounted, provide, ref } from 'vue'
+
+<script lang="ts" setup>
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { getStyle } from './getStyle'
-import ListItem from './list-item'
 
-export default defineComponent({
-  components: {
-    ListItem,
+const props = defineProps({
+  data: {
+    type: Array,
+    default: () => [],
   },
-  props: {
-    data: {
-      type: Array,
-      default: () => [],
-    },
-    height: {
-      type: Number,
-      default: 30,
-    },
+  height: {
+    type: Number,
+    default: 30,
   },
-  setup(props, ctx) {
-    let { height, data } = props
-    provide('virtual-scroll', ctx)
-    const box = ref<HTMLElement>()
-    let box_h: number
-    let bar_h: number
-    onMounted(() => {
-      const box_h_v = getStyle(box.value!, 'height') as string
-      const bar_h_v = getStyle(bar.value!, 'height') as string
-      box_h = parseInt(box_h_v)
-      bar_h = parseInt(bar_h_v)
-      // sumHeight.value -= box_h
-      document.addEventListener('mousemove', docMouseMove)
-      document.addEventListener('mouseup', docMouseUp)
-      showNum.value = Math.ceil(box_h / height)
-    })
-    onBeforeMount(() => {
-      document.removeEventListener('mousemove', docMouseMove)
-      document.removeEventListener('mouseup', docMouseUp)
-    })
-    const base = ref(0)
-    const sumHeight = ref(data.length * height)
-    const showNum = ref(20)
-    const list = computed(() => {
-      const _list = data.slice(base.value, base.value + showNum.value)
-      return _list
-    })
-    const h = ref(height)
-    const bar = ref<HTMLElement>()
-    const itemStyle = (item: any) => {
-      const index = data.indexOf(item)
-      return {
-        height: height + 'px',
-        top: index * height + 'px',
-      }
-    }
+})
 
-    const scrollDeal = (eve: any) => {
-      const scroll_v = eve.target.scrollTop
-      if (isAutoScroll) {
-        const per = scroll_v / sumHeight.value
-        const translate_y = (box_h - bar_h) * per
-        const el = bar.value! as HTMLElement
-        el.style.transform = `translateY(${translate_y}px)`
-      }
-      const base_num = Math.floor(scroll_v / height)
-      base.value = base_num
-    }
+const box = ref<HTMLElement>()
+const box_h = ref(0)
+let bar_h: number
 
-    // 拖拽滚动条实现列表一致
-    let isCanMove = false
-    let initY: number
-    let translate_y: number = 0
-    let isAutoScroll = true
-    const scrollBarDown = (e: MouseEvent) => {
-      isCanMove = true
-      isAutoScroll = false
-      initY = e.clientY
-      const el = bar.value as unknown as HTMLElement
-      const t_y = el.style.transform
-      const t_y_Rxp = /translateY\((\d+\.?(\d+)?)px\)/
-      if (t_y.match(t_y_Rxp)) {
-        translate_y = Number(RegExp.$1)
-      }
+const fixedHeight = 1_000_000
+const actualHeight = props.data.length * props.height
+const renderHeight = Math.min(actualHeight, fixedHeight)
+const scale = renderHeight / actualHeight
+const base = ref(0)
+const sumHeight = ref(renderHeight)
+const showNum = ref(20)
+// const list = computed(() => {
+//   const _list = props.data.slice(base.value, base.value + showNum.value)
+//   let _index = props.data.indexOf(_list[0])
+//   let firstTop = _index * props.height * scale
+//   if (firstTop < 0) {
+//     firstTop = 0
+//   }
+//   _list.forEach((item, i) => {
+//     const top = firstTop + (i * props.height) + 'px'
+//     // @ts-expect-error
+//     item.style = `height: ${h.value}px; top: ${top};`
+//   })
+//   return _list
+// })
+const list = ref([])
+const h = ref(props.height)
+const bar = ref<HTMLElement>()
+
+const calcList = (per: number, scrollTop: number) => {
+  const baseIndex = Math.min(props.data.length - showNum.value, Math.floor(per * (props.data.length - showNum.value)))
+  const _list = props.data.slice(baseIndex, baseIndex + showNum.value)
+  let firstTop = scrollTop
+  for (let i = 0; i < _list.length; i++) {
+    const top = firstTop + i * props.height + 'px'
+    // @ts-expect-error
+    _list[i].style = `height: ${h.value}px; top: ${top};`
+  }
+  list.value = _list
+}
+
+const scrollDeal = (event: MouseEvent) => {
+  const el = event.target as HTMLElement
+  const scrollTop = el.scrollTop
+  const totalScroll = sumHeight.value - box_h.value
+  const per = scrollTop / totalScroll
+  calcList(per, scrollTop)
+
+  // 同步滚动条位置
+  const bar_el = bar.value as unknown as HTMLElement
+  const v = per * (box_h.value - bar_h)
+  bar_el.style.transform = `translateY(${v}px)`
+}
+
+// 拖拽滚动条实现列表一致
+let isCanMove = false
+let initY: number
+let translate_y: number = 0
+let isAutoScroll = true
+const scrollBarDown = (e: MouseEvent) => {
+  isCanMove = true
+  isAutoScroll = false
+  initY = e.clientY
+  const el = bar.value as unknown as HTMLElement
+  const t_y = el.style.transform
+  const t_y_Rxp = /translateY\((\d+\.?(\d+)?)px\)/
+  if (t_y.match(t_y_Rxp)) {
+    translate_y = Number(RegExp.$1)
+  }
+}
+const docMouseMove = (e: MouseEvent) => {
+  if (isCanMove) {
+    const diffY = e.clientY - initY
+    let v = translate_y + diffY
+    const per = v / (box_h.value - bar_h)
+    if (v < 0) {
+      v = 0
+    } else if (v > box_h.value - bar_h) {
+      v = box_h.value - bar_h
     }
-    const docMouseMove = (e: MouseEvent) => {
-      if (isCanMove) {
-        const diffY = e.clientY - initY
-        let v = translate_y + diffY
-        const per = v / (box_h - bar_h)
-        if (v < 0) {
-          v = 0
-        } else if (v > box_h - bar_h) {
-          v = box_h - bar_h
-        }
-        const scroll_y = per * sumHeight.value
-        const box_el = box.value!
-        const bar_el = bar.value!
-        box_el.scrollTop = scroll_y
-        bar_el.style.transform = `translateY(${v}px)`
-      }
-    }
-    const docMouseUp = () => {
-      isCanMove = false
-      isAutoScroll = true
-    }
-    return {
-      list,
-      h,
-      base,
-      sumHeight,
-      itemStyle,
-      scrollDeal,
-      bar,
-      box,
-      scrollBarDown,
-    }
-  },
+    const box_el = box.value!
+    const bar_el = bar.value!
+    const scroll_v = sumHeight.value * per
+    box_el.scrollTop = scroll_v
+    bar_el.style.transform = `translateY(${v}px)`
+    calcList(per, scroll_v)
+  }
+}
+const docMouseUp = () => {
+  isCanMove = false
+  isAutoScroll = true
+}
+
+onMounted(() => {
+  const box_h_v = getStyle(box.value!, 'height') as string
+  const bar_h_v = getStyle(bar.value!, 'height') as string
+  box_h.value = parseInt(box_h_v)
+  bar_h = parseInt(bar_h_v)
+  // sumHeight.value -= box_h
+  document.addEventListener('mousemove', docMouseMove)
+  document.addEventListener('mouseup', docMouseUp)
+})
+onBeforeUnmount(() => {
+  document.removeEventListener('mousemove', docMouseMove)
+  document.removeEventListener('mouseup', docMouseUp)
 })
 </script>
 <style lang="scss" scoped>

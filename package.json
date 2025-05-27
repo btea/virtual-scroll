@@ -6,10 +6,10 @@
   "packageManager": "pnpm@10.11.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "vite",
+    "dev": "pnpm -C playground/vanilla dev",
+    "dev:vue": "pnpm -C playground/vue dev",
     "build": "vite build",
-    "format": "prettier --write .",
-    "prepare": "husky install"
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -29,8 +29,5 @@
     "eslint": "^9.27.0",
     "prettier": "3.5.3",
     "sass": "1.89.0"
-  },
-  "dependencies": {
-    "vite": "^6.3.5"
   }
 }

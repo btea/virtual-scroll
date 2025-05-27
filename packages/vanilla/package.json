@@ -1,6 +1,6 @@
 {
-  "name": "vanilla",
-  "version": "1.0.0",
+  "name": "virtual-scroll",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {

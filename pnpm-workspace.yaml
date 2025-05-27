@@ -1,3 +1,12 @@
 packages:
-  - 'packages/**'
-  - 'playground/**'
+  - packages/**
+  - playground/**
+catalog:
+  vue: ^3.5.14
+  typescript: ^5.8.3
+  '@vue/tsconfig': ^0.7.0
+  '@vitejs/plugin-vue': ^5.2.4
+  vite: ^6.3.5
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
